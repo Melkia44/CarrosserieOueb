@@ -1,0 +1,12 @@
+# PDFs sources (extraits pour les images, pas utiles en prod)
+*.pdf
+
+# Images extraites brutes (déjà embarquées en base64 dans index.html)
+images/
+
+# OS & éditeurs
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
