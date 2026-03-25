@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparaison images Hero</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #111; color: white; padding: 2rem; }
+        h1 { text-align: center; margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .card { background: #222; border-radius: 12px; overflow: hidden; }
+        .card img { width: 100%; height: 300px; object-fit: cover; }
+        .card .info { padding: 1.5rem; }
+        .card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .card p { color: #aaa; font-size: 0.9rem; line-height: 1.5; }
+        .badge { display: inline-block; background: #D4A843; color: #111; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <h1>Choix image Hero — Carrosserie Coiffé</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=800&q=75" alt="Mécanicien en atelier">
+            <div class="info">
+                <span class="badge">RECOMMANDÉ</span>
+                <h2>Option 1 — Mécanicien en atelier</h2>
+                <p>Un pro concentré au travail, éclairage d'atelier. Inspire confiance, montre l'humain derrière le métier.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800&q=75" alt="Mur d'outils garage">
+            <div class="info">
+                <h2>Option 2 — Mur d'outils de garage</h2>
+                <p>Ambiance atelier brute, outils bien rangés. Montre le savoir-faire et l'organisation sans personnage.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=75" alt="Voiture BMW grise">
+            <div class="info">
+                <h2>Option 3 — Voiture finie (résultat)</h2>
+                <p>BMW au coucher de soleil. Montre le résultat premium mais pas l'atelier.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1625773049587-82e2e32356d4?w=800&q=75" alt="Peinture carrosserie">
+            <div class="info">
+                <h2>Option 4 — Peinture au pistolet</h2>
+                <p>Pistolet de peinture en cabine. Directement lié à la carrosserie, très pro.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1621963417502-13e407699534?w=800&q=75" alt="Carrossier au travail">
+            <div class="info">
+                <h2>Option 5 — Ponçage carrosserie</h2>
+                <p>Mains qui travaillent sur une carrosserie. Artisanat, précision, savoir-faire.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=75" alt="Vue intérieure garage">
+            <div class="info">
+                <h2>Option 6 — Intérieur de garage</h2>
+                <p>Vue large d'un atelier automobile. Donne une idée de l'environnement professionnel.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
