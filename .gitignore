@@ -4,6 +4,9 @@
 # Images extraites brutes (déjà embarquées en base64 dans index.html)
 images/
 
+# Claude Code
+.claude/
+
 # OS & éditeurs
 .DS_Store
 Thumbs.db
