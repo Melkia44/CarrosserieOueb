@@ -10,11 +10,18 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://melkia44.github.io/CarrosserieOueb/">
     <meta property="og:locale" content="fr_FR">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://melkia44.github.io/CarrosserieOueb/assets/img-1.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Carrosserie Coiffé — Réparation & Peinture auto">
     <meta name="twitter:description" content="Carrosserie, peinture, débosselage à Nort-sur-Erdre. Réseau AXIAL, 5/5 ★ 60 avis. Devis gratuit.">
+    <meta name="twitter:image" content="https://melkia44.github.io/CarrosserieOueb/assets/img-1.webp">
     <link rel="canonical" href="https://melkia44.github.io/CarrosserieOueb/">
     <title>Carrosserie Coiffé - Réparation Carrosserie & Peinture à Nort-sur-Erdre</title>
+
+    <!-- Preload hero image for faster LCP -->
+    <link rel="preload" as="image" href="assets/img-1.webp" type="image/webp">
 
     <!-- Google Fonts: Plus Jakarta Sans + DM Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,6 +34,27 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Skip-to-content (accessibilité) */
+        .skip-to-content {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent, #1D4E89);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            z-index: 10000;
+            transition: top 0.3s ease;
+        }
+        .skip-to-content:focus {
+            top: 0;
+            outline: 3px solid #D4A843;
+            outline-offset: 2px;
         }
 
         :root {
@@ -186,6 +214,25 @@
         }
 
         header.scrolled nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Scroll spy : lien actif dans la nav */
+        nav a.nav-active {
+            color: white;
+            position: relative;
+        }
+        nav a.nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--highlight);
+            border-radius: 1px;
+        }
+        header.scrolled nav a.nav-active {
             color: var(--accent);
         }
 
@@ -812,6 +859,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 12;
             pointer-events: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .gallery-item:hover .slider-button,
+        .gallery-item.sliding .slider-button {
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
         }
 
         .gallery-label {
@@ -840,6 +893,12 @@
             font-size: 0.85rem;
             z-index: 8;
             pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-hint,
+        .gallery-item.sliding .gallery-hint {
+            opacity: 0;
+            transform: translateX(-50%) translateY(10px);
         }
 
         /* ============================================================================
@@ -1507,7 +1566,7 @@
         "@context": "https://schema.org",
         "@type": "AutoBodyShop",
         "name": "Carrosserie Coiffé",
-        "image": "https://melkia44.github.io/CarrosserieOueb/",
+        "image": "https://melkia44.github.io/CarrosserieOueb/assets/img-1.webp",
         "url": "https://melkia44.github.io/CarrosserieOueb/",
         "telephone": "+33240298608",
         "email": "carrosserie.coiffe@gmail.com",
@@ -1557,9 +1616,12 @@
     <!-- <script defer data-domain="carrosseriecoiffe.fr" src="https://plausible.io/js/script.js"></script> -->
 </head>
 <body>
+    <!-- Skip-to-content : accessibilité clavier (Tab) -->
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+
     <header id="header">
         <div class="header-container">
-            <div class="logo"><img src="assets/img-src-1.webp" loading="lazy" alt="Logo Carrosserie Coiffé" style="height:42px;width:42px;border-radius:50%;object-fit:cover;margin-right:8px;"> Carrosserie <span>Coiffé</span></div>
+            <div class="logo"><img src="assets/img-src-1.webp" width="42" height="42" alt="Logo Carrosserie Coiffé" style="border-radius:50%;object-fit:cover;margin-right:8px;"> Carrosserie <span>Coiffé</span></div>
             <nav>
                 <ul>
                     <li><a href="#services">Services</a></li>
@@ -1573,7 +1635,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
     <section class="hero" id="hero">
         <div class="hero-content">
             <div class="hero-tag">Carrosserie · Peinture · Réparation</div>
@@ -1625,32 +1687,32 @@
             </div>
             <div class="services-grid reveal">
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-2.webp" loading="lazy" alt="Réparation carrosserie" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-2.webp" loading="lazy" width="600" height="600" alt="Réparation carrosserie"></div>
                     <h3>Carrosserie</h3>
                     <p>Réparation de carrosserie toutes marques, débosselage, redressage et remplacement de panneaux. Y compris véhicules anciens.</p>
                 </article>
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-3.webp" loading="lazy" alt="Peinture automobile" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-3.webp" loading="lazy" width="600" height="597" alt="Peinture automobile"></div>
                     <h3>Peinture</h3>
                     <p>Travaux de peinture automobile professionnels sur tout véhicule. Finition brillante et durable.</p>
                 </article>
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-4.webp" loading="lazy" alt="Réparation sinistre automobile" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-4.webp" loading="lazy" width="600" height="602" alt="Réparation sinistre automobile"></div>
                     <h3>Débosselage & Sinistre</h3>
                     <p>Remise en état après sinistre automobile. Libre choix du réparateur garanti par la loi.</p>
                 </article>
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-5.webp" loading="lazy" alt="Entretien mécanique" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-5.webp" loading="lazy" width="600" height="315" alt="Entretien mécanique"></div>
                     <h3>Entretien mécanique</h3>
                     <p>Prestation d'entretien mécanique complète pour maintenir votre véhicule en parfait état.</p>
                 </article>
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-6.webp" loading="lazy" alt="Montage pneus" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-6.webp" loading="lazy" width="600" height="359" alt="Montage pneus"></div>
                     <h3>Pneus</h3>
                     <p>Retrouvez chez nous un vaste choix des plus grandes marques de pneus avec montage professionnel.</p>
                 </article>
                 <article class="service-card">
-                    <div class="service-photo"><img src="assets/img-src-7.webp" loading="lazy" alt="Vitrage et dépannage" loading="lazy"></div>
+                    <div class="service-photo"><img src="assets/img-src-7.webp" loading="lazy" width="600" height="602" alt="Vitrage et dépannage"></div>
                     <h3>Vitrage</h3>
                     <p>Remplacement de pare-brise, vitrages et réparation d'impact par des experts reconnus.</p>
                 </article>
@@ -1929,7 +1991,7 @@
                     </div>
                     <div class="contact-block">
                         <h3>Réseaux sociaux</h3>
-                        <p><a href="https://www.facebook.com/carrosseriecoiffe/" target="_blank">Suivez-nous sur Facebook</a></p>
+                        <p><a href="https://www.facebook.com/carrosseriecoiffe/" target="_blank" rel="noopener noreferrer">Suivez-nous sur Facebook</a></p>
                     </div>
                     <div class="map-container">
                         <iframe width="100%" height="100%" style="border: none;" src="https://www.google.com/maps?q=74+Rue+Saint-Georges,+44390+Nort-sur-Erdre,+France&output=embed" allowfullscreen="" loading="lazy" title="Localisation Carrosserie Coiffé"></iframe>
@@ -1958,7 +2020,7 @@
             <button class="modal-close" onclick="closeModal(document.getElementById('modalMentions'))" aria-label="Fermer">&times;</button>
             <h2>Mentions légales</h2>
             <h3>Éditeur du site</h3>
-            <p><strong>Carrosserie Coiffé</strong><br>74 rue Saint-Georges, 44390 Nort-sur-Erdre, France<br>Tél : <a href="tel:0240298608">02 40 29 86 08</a><br>Email : <a href="mailto:carrosserie.coiffe@gmail.com">carrosserie.coiffe@gmail.com</a><br>SIRET : [Numéro SIRET à compléter]<br>Responsable de la publication : [Nom du gérant]</p>
+            <p><strong>Carrosserie Coiffé</strong><br>74 rue Saint-Georges, 44390 Nort-sur-Erdre, France<br>Tél : <a href="tel:0240298608">02 40 29 86 08</a><br>Email : <a href="mailto:carrosserie.coiffe@gmail.com">carrosserie.coiffe@gmail.com</a><br><!-- TODO CLIENT : remplacer les deux valeurs ci-dessous -->SIRET : [SIRET_A_COMPLETER]<br>Responsable de la publication : [NOM_GERANT_A_COMPLETER]</p>
             <h3>Hébergement</h3>
             <p>GitHub Pages (GitHub, Inc.) — 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, USA</p>
             <h3>Propriété intellectuelle</h3>
@@ -2023,7 +2085,7 @@
                 <p><a href="mailto:carrosserie.coiffe@gmail.com">carrosserie.coiffe@gmail.com</a></p>
                 <p style="margin-top: 1rem;">74 rue Saint-Georges<br>44390 Nort-sur-Erdre</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/carrosseriecoiffe/" target="_blank" title="Facebook">f</a>
+                    <a href="https://www.facebook.com/carrosseriecoiffe/" target="_blank" rel="noopener noreferrer" aria-label="Visitez notre page Facebook" title="Facebook">f</a>
                 </div>
             </div>
         </div>
@@ -2040,7 +2102,7 @@
         </a>
     </div>
 
-    <a href="https://wa.me/33240298608?text=Bonjour%2C%20je%20souhaite%20un%20devis." class="floating-whatsapp" title="Contacter via WhatsApp" aria-label="Envoyer un message WhatsApp" target="_blank">
+    <a href="https://wa.me/33240298608?text=Bonjour%2C%20je%20souhaite%20un%20devis." class="floating-whatsapp" title="Contacter via WhatsApp" aria-label="Envoyer un message WhatsApp" target="_blank" rel="noopener noreferrer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Retour en haut" aria-label="Retour en haut de la page">
@@ -2060,6 +2122,28 @@
             }
         });
 
+        // Scroll spy : met en surbrillance le lien nav correspondant à la section visible
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const spySections = [];
+        navLinks.forEach(link => {
+            const id = link.getAttribute('href').slice(1);
+            const section = document.getElementById(id);
+            if (section) spySections.push({ link, section });
+        });
+        function updateScrollSpy() {
+            const scrollY = window.scrollY + 120; // offset header height
+            let current = null;
+            spySections.forEach(({ link, section }) => {
+                if (section.offsetTop <= scrollY) current = link;
+            });
+            navLinks.forEach(l => l.classList.remove('nav-active'));
+            if (current && !current.classList.contains('btn-nav')) {
+                current.classList.add('nav-active');
+            }
+        }
+        window.addEventListener('scroll', updateScrollSpy, { passive: true });
+        updateScrollSpy();
+
         // Floating buttons visibility
         const floatingPhone = document.querySelector('.floating-phone');
         const backToTopBtn = document.getElementById('backToTop');
@@ -2077,39 +2161,53 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Gallery slider
+        // Gallery before/after slider — drag depuis n'importe où dans la card
         document.querySelectorAll('.gallery-item').forEach(item => {
-            const afterImageInner = item.querySelector('.after-image-inner');
+            const afterInner = item.querySelector('.after-image-inner');
             const handle = item.querySelector('.slider-handle');
+            const button = item.querySelector('.slider-button');
             let isActive = false;
 
-            function updateSlider(e) {
-                if (!isActive) return;
-                const rect = item.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                if (e.touches) x = e.touches[0].clientX - rect.left;
-                x = Math.max(0, Math.min(x, rect.width));
-                const percentage = (x / rect.width) * 100;
-                afterImageInner.style.width = percentage + '%';
-                handle.style.left = percentage + '%';
+            function setPosition(percentage) {
+                const p = Math.max(0, Math.min(100, percentage));
+                afterInner.style.width = p + '%';
+                handle.style.left = p + '%';
+                button.style.left = p + '%';
+                item.setAttribute('aria-valuenow', Math.round(p));
             }
 
-            handle.addEventListener('mousedown', () => { isActive = true; });
-            document.addEventListener('mouseup', () => { isActive = false; });
-            document.addEventListener('mousemove', updateSlider);
-
-            handle.addEventListener('touchstart', () => { isActive = true; });
-            document.addEventListener('touchend', () => { isActive = false; });
-            document.addEventListener('touchmove', updateSlider);
-
-            item.addEventListener('click', (e) => {
+            function getPercentage(e) {
                 const rect = item.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                x = Math.max(0, Math.min(x, rect.width));
-                const percentage = (x / rect.width) * 100;
-                afterImageInner.style.width = percentage + '%';
-                handle.style.left = percentage + '%';
-            });
+                const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                return (Math.max(0, Math.min(x, rect.width)) / rect.width) * 100;
+            }
+
+            function startSlide(e) {
+                e.preventDefault();
+                isActive = true;
+                item.classList.add('sliding');
+                setPosition(getPercentage(e));
+            }
+            function moveSlide(e) {
+                if (!isActive) return;
+                e.preventDefault();
+                setPosition(getPercentage(e));
+            }
+            function stopSlide() {
+                if (!isActive) return;
+                isActive = false;
+                item.classList.remove('sliding');
+            }
+
+            // Souris : mousedown sur toute la card
+            item.addEventListener('mousedown', startSlide);
+            document.addEventListener('mousemove', moveSlide);
+            document.addEventListener('mouseup', stopSlide);
+
+            // Tactile : touchstart sur toute la card
+            item.addEventListener('touchstart', startSlide, { passive: false });
+            document.addEventListener('touchmove', moveSlide, { passive: false });
+            document.addEventListener('touchend', stopSlide);
         });
 
         // Testimonial carousel
@@ -2351,7 +2449,7 @@
             (el.closest ? el.closest('.modal-overlay') : el).classList.remove('active');
             document.body.style.overflow = '';
         }
-              document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m));
         });
 
@@ -2387,14 +2485,16 @@
             item.setAttribute('aria-valuemax', '100');
             item.setAttribute('aria-valuenow', '50');
             item.addEventListener('keydown', function(e) {
-                const after = this.querySelector('.after-image');
+                const afterInner = this.querySelector('.after-image-inner');
                 const handle = this.querySelector('.slider-handle');
-                if (!after) return;
-                let cur = parseFloat(after.style.width) || 50;
+                const button = this.querySelector('.slider-button');
+                if (!afterInner) return;
+                let cur = parseFloat(afterInner.style.width) || 50;
                 if (e.key === 'ArrowRight') { cur = Math.min(100, cur + 5); e.preventDefault(); }
                 if (e.key === 'ArrowLeft') { cur = Math.max(0, cur - 5); e.preventDefault(); }
-                after.style.width = cur + '%';
+                afterInner.style.width = cur + '%';
                 if (handle) handle.style.left = cur + '%';
+                if (button) button.style.left = cur + '%';
                 this.setAttribute('aria-valuenow', Math.round(cur));
             });
         });
