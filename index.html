@@ -1628,32 +1628,32 @@
                     <div class="service-photo"><img src="assets/img-src-2.webp" loading="lazy" alt="Réparation carrosserie" loading="lazy"></div>
                     <h3>Carrosserie</h3>
                     <p>Réparation de carrosserie toutes marques, débosselage, redressage et remplacement de panneaux. Y compris véhicules anciens.</p>
-                </div>
+                </article>
                 <article class="service-card">
                     <div class="service-photo"><img src="assets/img-src-3.webp" loading="lazy" alt="Peinture automobile" loading="lazy"></div>
                     <h3>Peinture</h3>
                     <p>Travaux de peinture automobile professionnels sur tout véhicule. Finition brillante et durable.</p>
-                </div>
+                </article>
                 <article class="service-card">
                     <div class="service-photo"><img src="assets/img-src-4.webp" loading="lazy" alt="Réparation sinistre automobile" loading="lazy"></div>
                     <h3>Débosselage & Sinistre</h3>
                     <p>Remise en état après sinistre automobile. Libre choix du réparateur garanti par la loi.</p>
-                </div>
+                </article>
                 <article class="service-card">
                     <div class="service-photo"><img src="assets/img-src-5.webp" loading="lazy" alt="Entretien mécanique" loading="lazy"></div>
                     <h3>Entretien mécanique</h3>
                     <p>Prestation d'entretien mécanique complète pour maintenir votre véhicule en parfait état.</p>
-                </div>
+                </article>
                 <article class="service-card">
                     <div class="service-photo"><img src="assets/img-src-6.webp" loading="lazy" alt="Montage pneus" loading="lazy"></div>
                     <h3>Pneus</h3>
                     <p>Retrouvez chez nous un vaste choix des plus grandes marques de pneus avec montage professionnel.</p>
-                </div>
+                </article>
                 <article class="service-card">
                     <div class="service-photo"><img src="assets/img-src-7.webp" loading="lazy" alt="Vitrage et dépannage" loading="lazy"></div>
                     <h3>Vitrage</h3>
                     <p>Remplacement de pare-brise, vitrages et réparation d'impact par des experts reconnus.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1776,37 +1776,37 @@
                             <div class="testimonial-text">"Excellente carrosserie, un travail de qualité, toujours à l'écoute des clients avec des tarifs très raisonnables."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Février 2026</div>
-                        </div>
+                        </article>
                         <article class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
                             <div class="testimonial-text">"Très professionnel. Rapidité d'intervention. Contact très agréable. Travail soigné."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Février 2026</div>
-                        </div>
+                        </article>
                         <article class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
                             <div class="testimonial-text">"Sébastien est au top. Disponible, souriant, compétent. En plus, prêt de voiture inclus dans la prestation."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Janvier 2025</div>
-                        </div>
+                        </article>
                         <article class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
                             <div class="testimonial-text">"Accueil sympathique, disponibilité, travail impeccable, bref parfait à tout point de vue."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Août 2025</div>
-                        </div>
+                        </article>
                         <article class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
                             <div class="testimonial-text">"Accueil chaleureux, conseils, respect des délais, travail soigné et facturation justifiée. Je recommande."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Mars 2025</div>
-                        </div>
+                        </article>
                         <article class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
                             <div class="testimonial-text">"Travaux de peinture réalisés parfaitement. Prise en charge dans un délai court."</div>
                             <div class="testimonial-author">Client satisfait</div>
                             <div class="testimonial-date">Janvier 2026</div>
-                        </div>
+                        </article>
                     </div>
                 </div>
                 <button class="carousel-button next" onclick="nextTestimonial()" aria-label="Témoignage suivant">❯</button>
@@ -2351,7 +2351,7 @@
             (el.closest ? el.closest('.modal-overlay') : el).classList.remove('active');
             document.body.style.overflow = '';
         }
-        document.addEventListener('keydown', function(e) {
+              document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m));
         });
 
@@ -2382,7 +2382,7 @@
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.setAttribute('tabindex', '0');
             item.setAttribute('role', 'slider');
-            item.setAttribute('aria-label', 'Glisseur avant/apr\u00e8s');
+            item.setAttribute('aria-label', 'Glisseur avant/après');
             item.setAttribute('aria-valuemin', '0');
             item.setAttribute('aria-valuemax', '100');
             item.setAttribute('aria-valuenow', '50');
