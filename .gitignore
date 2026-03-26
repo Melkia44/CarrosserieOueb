@@ -1,7 +1,7 @@
 # PDFs sources (extraits pour les images, pas utiles en prod)
 *.pdf
 
-# Images extraites brutes (déjà embarquées en base64 dans index.html)
+# Images extraites brutes (non utilisées, remplacées par assets/)
 images/
 
 # Claude Code
