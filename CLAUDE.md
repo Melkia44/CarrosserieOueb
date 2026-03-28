@@ -46,8 +46,6 @@ one-page en HTML/CSS/JS pour un garage carrossier indépendant français.
 
 ### DIRECTION ESTHÉTIQUE
 - Style : industriel-moderne avec une touche premium (pas cheap, pas clinique)
-- Palette : noir profond (#0D0D0D) + blanc cassé (#F5F0EB) + 
-  accent rouge vif (#E63429) ou orange métal (#FF6B2B) — choisir le plus impactant
 - Typographie : titre display percutant (ex: Bebas Neue, Barlow Condensed) 
   + corps lisible (ex: DM Sans, Figtree) — charger via Google Fonts
 - Animations : reveal au scroll (Intersection Observer), hover sur les cards, 

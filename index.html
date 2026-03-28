@@ -253,9 +253,95 @@
             box-shadow: var(--shadow-sm);
         }
 
+        /* Hamburger button (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        header.scrolled .hamburger span {
+            background-color: var(--text-primary);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        /* Overlay derrière le menu mobile */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1040;
+        }
+        .nav-overlay.active {
+            display: block;
+        }
+
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background-color: var(--bg-card);
+                box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+                transition: right 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+                z-index: 1050;
+                padding: 5rem 2rem 2rem;
+                overflow-y: auto;
+            }
+            nav.open {
+                right: 0;
+            }
             nav ul {
-                gap: 1.25rem;
+                flex-direction: column;
+                gap: 0;
+            }
+            nav a {
+                color: var(--text-primary) !important;
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:hover {
+                color: var(--accent) !important;
+            }
+            nav a.btn-nav {
+                margin-top: 1rem;
+                text-align: center;
+                padding: 1rem 1.5rem;
+                border-bottom: none;
             }
         }
 
@@ -1008,6 +1094,19 @@
             background-color: var(--border);
             cursor: pointer;
             transition: all var(--duration-normal) ease;
+            /* Zone tactile 44px minimum via padding */
+            padding: 0;
+            border: none;
+            position: relative;
+        }
+        .carousel-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
         }
 
         .carousel-dot.active {
@@ -1638,7 +1737,13 @@
     <header id="header">
         <div class="header-container">
             <div class="logo"><img src="assets/img-src-1.webp" width="42" height="42" alt="Logo Carrosserie Coiffé" style="border-radius:50%;object-fit:cover;margin-right:8px;"> Carrosserie <span>Coiffé</span></div>
-            <nav>
+            <!-- Bouton hamburger mobile -->
+            <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#process">Processus</a></li>
@@ -1650,6 +1755,8 @@
             </nav>
         </div>
     </header>
+    <!-- Overlay fond sombre pour menu mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <main id="main-content">
     <section class="hero" id="hero">
@@ -1658,7 +1765,7 @@
             <h1>Votre carrosserie de confiance à Nort-sur-Erdre</h1>
             <p>Expertise, transparence et rapidité pour tous vos besoins de carrosserie et peinture</p>
             <div class="hero-ctas">
-                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Demander un devis gratuit</button>
+                <a href="#contact" class="btn-primary" style="display:inline-block;text-align:center;">Demander un devis gratuit</a>
                 <a href="tel:0240298608" class="btn-secondary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -1946,24 +2053,25 @@
                 <p class="subtitle">Nous vous répondons rapidement pour un devis personnalisé</p>
             </div>
             <div class="contact-wrapper reveal">
-                <!-- Formspree : remplacer YOUR_FORM_ID par l'ID obtenu sur formspree.io -->
+                <!-- ⚠️ IMPORTANT : Remplacer YOUR_FORM_ID ci-dessous par l'ID réel obtenu sur https://formspree.io
+                     Sans cela, le formulaire ne fonctionnera PAS et basculera sur le fallback mailto. -->
                 <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="return submitForm(event)">
                     <input type="hidden" name="_subject" value="Nouvelle demande de devis — Carrosserie Coiffé">
                     <input type="hidden" name="_replyto" id="replyToField">
                     <div class="form-group">
                         <label for="name">Nom complet *</label>
                         <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" aria-describedby="name-error">
-                        <span class="form-error" id="name-error" role="alert">Veuillez entrer votre nom</span>
+                        <span class="form-error" id="name-error" aria-live="assertive">Veuillez entrer votre nom</span>
                     </div>
                     <div class="form-group">
                         <label for="phone">Téléphone *</label>
                         <input type="tel" id="phone" name="phone" required autocomplete="tel" aria-required="true" aria-describedby="phone-error">
-                        <span class="form-error" id="phone-error" role="alert">Veuillez entrer un numéro valide</span>
+                        <span class="form-error" id="phone-error" aria-live="assertive">Veuillez entrer un numéro valide</span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email <span style="font-weight:400;color:var(--text-light)">(optionnel)</span></label>
                         <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error">
-                        <span class="form-error" id="email-error" role="alert">Veuillez entrer un email valide</span>
+                        <span class="form-error" id="email-error" aria-live="assertive">Veuillez entrer un email valide</span>
                     </div>
                     <div class="form-group">
                         <label for="service">Type de réparation *</label>
@@ -1977,12 +2085,12 @@
                             <option value="vitrage">Vitrage</option>
                             <option value="autre">Autre</option>
                         </select>
-                        <span class="form-error" id="service-error" role="alert">Veuillez sélectionner un service</span>
+                        <span class="form-error" id="service-error" aria-live="assertive">Veuillez sélectionner un service</span>
                     </div>
                     <div class="form-group">
                         <label for="message">Message détaillé *</label>
                         <textarea id="message" name="message" required aria-required="true" aria-describedby="message-error"></textarea>
-                        <span class="form-error" id="message-error" role="alert">Veuillez entrer un message</span>
+                        <span class="form-error" id="message-error" aria-live="assertive">Veuillez entrer un message</span>
                     </div>
                     <button type="submit" class="form-submit">Envoyer ma demande</button>
                     <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
@@ -2131,6 +2239,30 @@
     </button>
 
     <script>
+        // === Mobile hamburger menu ===
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMobileMenu() {
+            const isOpen = mainNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu de navigation');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Fermer le menu mobile au clic sur un lien
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('open')) toggleMobileMenu();
+            });
+        });
+
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -2268,6 +2400,27 @@
         }
 
         createDots();
+
+        // Swipe tactile sur le carrousel témoignages
+        (function() {
+            const track = document.querySelector('.carousel-track');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const SWIPE_THRESHOLD = 50;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > SWIPE_THRESHOLD) {
+                    if (diff > 0) nextTestimonial();
+                    else prevTestimonial();
+                }
+            }, { passive: true });
+        })();
 
         // FAQ toggle
         function toggleFaq(element) {
